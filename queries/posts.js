@@ -18,7 +18,7 @@ const getOnePost = async (id) => {
 };
 const createPost = async (post) =>{
     try {
-        const createdPost = await db.one("INSERT INTO posts (id, userName, postMesssage, post_pic, profile_pic) VALUES ($1, $2, $3, $4, $5) RETURNING *", [post.id, post.userName, post.postMessage, post.post_pic, post.profile_pic])
+        const createdPost = await db.one("INSERT INTO posts (id, username, postMesssage, post_pic, profile_pic) VALUES ($1, $2, $3, $4, $5) RETURNING *", [post.id, post.userName, post.postMessage, post.post_pic, post.profile_pic])
         return createdPost
     } catch (error) {
         return error
@@ -39,10 +39,10 @@ const deletePost = async (id) => {
 
 const updatePost = async (id, post) => {
     try {
-        const { userName, postMessage, post_pic, profile_pic} = post;
+        const { username, postMessage, post_pic, profile_pic} = post;
         const updatedPost = await db.one(
-            "UPDATE posts SET userName=$1, postMessage=$2, post_pic=$3, profile_pic=$4 WHERE id=$5RETURNING *",
-            [userName, postMessage, post_pic, profile_pic]
+            "UPDATE posts SET username=$1, postMessage=$2, post_pic=$3, profile_pic=$4 WHERE id=$5RETURNING *",
+            [username, postMessage, post_pic, profile_pic]
         );
         return updatedPost
     } catch(err) {

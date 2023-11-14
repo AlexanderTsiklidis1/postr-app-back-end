@@ -1,6 +1,6 @@
 const checkUserName = (req, res, next) => {
     
-    if(req.body.userName){
+    if(req.body.username){
         console.log("username is okay")
         
     } else {
